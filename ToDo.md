@@ -7,6 +7,7 @@
 - [ ] 仮のクイズデータ作成（`src/data/questions.ts`）
 
 ## 優先度B（A完了後に着手）
+- [ ] タイトル画面（TitleScreen.tsx）作成
 - [ ] Quiz.tsx（クイズ進行管理）作成
 - [ ] QuestionCard.tsx（1問表示・選択肢UI）作成
 - [ ] Result.tsx（最終スコア表示）作成
