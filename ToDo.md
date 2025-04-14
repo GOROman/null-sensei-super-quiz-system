@@ -3,8 +3,8 @@
 ## 優先度A（最優先で着手）
 - [ ] Astro 5.x プロジェクト新規作成
 - [ ] TypeScript, Tailwind CSS, Shadcn UI セットアップ
-- [ ] クイズ用TypeScript型定義（QuizQuestion型）作成（`src/types/quiz.ts`）
-- [ ] 仮のクイズデータ作成（`src/data/questions.ts`）
+- [x] クイズ用TypeScript型定義（QuizQuestion型）作成（`src/types/quiz.ts`）
+- [x] 仮のクイズデータ作成（`src/data/questions.ts`）
 
 ## 優先度B（A完了後に着手）
 - [ ] タイトル画面（TitleScreen.tsx）作成
