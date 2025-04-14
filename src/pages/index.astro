@@ -1,5 +1,8 @@
 ---
 title: "ちょっとHなガンダム3択クイズ"
+import React, { useState } from "react"
+import { TitleScreen } from "../components/TitleScreen"
+import Quiz from "../components/Quiz"
 ---
 
 <head>
@@ -7,8 +10,12 @@ title: "ちょっとHなガンダム3択クイズ"
   <title>ちょっとHなガンダム3択クイズ</title>
 </head>
 
-<main class="min-h-screen flex flex-col items-center justify-center bg-gray-50">
-  <h1 class="text-3xl font-bold mb-6">ちょっとHなガンダム3択クイズ</h1>
-  <p class="mb-4 text-gray-600">クイズコンポーネントは今後ここに表示されます。</p>
-  <!-- TODO: Quizコンポーネントをここに埋め込む -->
-</main>
+{/** React Islandで状態管理 */}
+{(() => {
+  const [showQuiz, setShowQuiz] = useState(false)
+  return showQuiz ? (
+    <Quiz />
+  ) : (
+    <TitleScreen onStart={() => setShowQuiz(true)} />
+  )
+})()}
