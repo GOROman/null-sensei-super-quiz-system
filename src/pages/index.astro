@@ -1,8 +1,6 @@
 ---
 title: "ちょっとHなガンダム3択クイズ"
-import React, { useState } from "react"
-import { TitleScreen } from "../components/TitleScreen"
-import Quiz from "../components/Quiz"
+import App from "../components/App"
 ---
 
 <head>
@@ -10,12 +8,4 @@ import Quiz from "../components/Quiz"
   <title>ちょっとHなガンダム3択クイズ</title>
 </head>
 
-{/** React Islandで状態管理 */}
-{(() => {
-  const [showQuiz, setShowQuiz] = useState(false)
-  return showQuiz ? (
-    <Quiz />
-  ) : (
-    <TitleScreen onStart={() => setShowQuiz(true)} />
-  )
-})()}
+<App client:load />
