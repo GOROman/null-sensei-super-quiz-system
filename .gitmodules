@@ -1,0 +1,3 @@
+[submodule "smoggy-shepherd"]
+	path = smoggy-shepherd
+	url = https://github.com/esaraviam/smoggy-shepherd.git
