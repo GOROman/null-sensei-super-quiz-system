@@ -52,12 +52,14 @@ function QuestionCard({
         {question.options.map((choice, idx) => {
           let btnClass = "w-full px-8 py-6 text-2xl sm:text-3xl font-semibold rounded-2xl border-2 text-center transition focus:outline-none focus:ring-4 ";
           if (isAnswered) {
-            if (idx === question.answerIndex) {
-              btnClass += "bg-green-500 text-white border-green-600 ";
-            } else if (selected === idx) {
-              btnClass += "bg-red-500 text-white border-red-600 ";
+            if (selected === idx) {
+              // 選択した選択肢のみ色を残す
+              btnClass += idx === question.answerIndex
+                ? "bg-green-500 text-white border-green-600 " // 正解を選んだ場合
+                : "bg-red-500 text-white border-red-600 ";   // 不正解を選んだ場合
             } else {
-              btnClass += "bg-gray-100 border-gray-300 ";
+              // 選択していないものはグレーアウト
+              btnClass += "bg-gray-100 text-gray-400 border-gray-200 ";
             }
           } else {
             btnClass += selected === idx
@@ -87,6 +89,9 @@ function QuestionCard({
       {isAnswered && (
         <div className="mt-8 text-2xl sm:text-3xl font-bold text-center" aria-live="polite">
           {isCorrect ? "⭕️ 正解！" : "❌ 不正解"}
+          {!isCorrect && (
+            <div className="mt-4 text-lg text-green-700 font-semibold">正解: {question.options[question.answerIndex]}</div>
+          )}
         </div>
       )}
     </section>
