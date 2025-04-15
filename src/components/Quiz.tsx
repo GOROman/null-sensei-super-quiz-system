@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { questions } from "../data/questions";
 import QuestionCard from "./QuestionCard";
 import Result from "./Result";
+import { useSE } from "@/hooks/useSE";
 
 function shuffle<T>(array: T[]): T[] {
   return [...array].sort(() => Math.random() - 0.5);
@@ -28,6 +29,8 @@ const Quiz = () => {
   // プログレスバー用
   const [progress, setProgress] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const playSE = useSE();
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
@@ -63,6 +66,7 @@ const Quiz = () => {
 
   // 「次へ」ボタン or 自動遷移時
   const handleNext = () => {
+    playSE("start");
     if (timerRef.current) clearInterval(timerRef.current);
     if (currentQuestionIndex + 1 >= totalQuestions) {
       setIsFinished(true);
@@ -76,6 +80,7 @@ const Quiz = () => {
   };
 
   const handleRetry = () => {
+    playSE("start");
     setCurrentQuestionIndex(0);
     setSelected(undefined);
     setIsAnswered(false);
