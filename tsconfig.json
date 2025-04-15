@@ -1,0 +1,10 @@
+{
+  "extends": "./smoggy-shepherd/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src", "components"]
+}

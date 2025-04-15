@@ -1,5 +1,6 @@
 import React from "react";
 import type { QuizQuestion } from "@/types/quiz";
+import { Button } from "@/components/ui/button";
 
 /**
  * 1問分のクイズ表示・選択肢UIコンポーネント
@@ -35,16 +36,21 @@ function QuestionCard({
   isCorrect,
 }: QuestionCardProps) {
   return (
-    <section className="bg-white rounded shadow p-4 sm:p-6 w-full max-w-md mx-auto">
-      <div className="text-xs text-gray-500 mb-1">
+    <section className="flex flex-col justify-center items-center min-h-[60vh] bg-white rounded shadow p-4 sm:p-8 w-full max-w-2xl mx-auto">
+      <div className="text-xs text-gray-500 mb-2 self-start">
         第{questionNumber}問 / 全{totalQuestions}問
       </div>
-      <h3 className="text-base sm:text-lg font-bold mb-4 text-blue-900" data-testid="question-text">
+      <h3
+        className="text-center text-2xl sm:text-3xl font-bold mb-8 text-blue-900 break-words"
+        data-testid="question-text"
+        tabIndex={0}
+        aria-label={`問題: ${question.question}`}
+      >
         {question.question}
       </h3>
-      <ul className="space-y-2 sm:space-y-3">
+      <ul className="list-none p-0 flex flex-col gap-7 w-full max-w-2xl">
         {question.options.map((choice, idx) => {
-          let btnClass = "w-full px-3 sm:px-4 py-2 rounded border text-left transition ";
+          let btnClass = "w-full px-8 py-6 text-2xl sm:text-3xl font-semibold rounded-2xl border-2 text-center transition focus:outline-none focus:ring-4 ";
           if (isAnswered) {
             if (idx === question.answerIndex) {
               btnClass += "bg-green-500 text-white border-green-600 ";
@@ -61,23 +67,25 @@ function QuestionCard({
           if (disabled) btnClass += "opacity-50 cursor-not-allowed ";
 
           return (
-            <li key={idx}>
-              <button
+            <li key={idx} className="m-0 p-0 w-full">
+              <Button
                 type="button"
                 className={btnClass}
                 onClick={() => onSelect(idx)}
                 disabled={disabled}
                 aria-label={`選択肢${idx + 1}: ${choice}`}
                 data-testid={`choice-${idx}`}
+                variant="ghost"
+                tabIndex={0}
               >
                 {choice}
-              </button>
+              </Button>
             </li>
           );
         })}
       </ul>
       {isAnswered && (
-        <div className="mt-4 text-xl sm:text-2xl" aria-live="polite">
+        <div className="mt-8 text-2xl sm:text-3xl font-bold text-center" aria-live="polite">
           {isCorrect ? "⭕️ 正解！" : "❌ 不正解"}
         </div>
       )}
