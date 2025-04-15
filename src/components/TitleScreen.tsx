@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { Button } from "@/components/ui/button";
 
 /**
  * TitleScreen component props.
@@ -20,13 +21,14 @@ const TitleScreen: FC<TitleScreenProps> = ({ onStart }) => (
     <h1 className="text-2xl sm:text-4xl font-extrabold mb-8 text-pink-700 drop-shadow text-center">
       ちょっとHなガンダム3択クイズ
     </h1>
-    <button
-      className="w-full max-w-xs px-6 py-3 bg-blue-600 text-white rounded shadow hover:bg-blue-700 text-lg sm:text-xl font-bold mb-4"
+    <Button
+      className="w-full max-w-xs px-8 py-4 text-xl sm:text-2xl font-bold rounded-2xl bg-blue-600 text-white shadow hover:bg-blue-700 mb-4"
       onClick={onStart}
       aria-label="クイズを始める"
+      variant="default"
     >
       クイズを始める
-    </button>
+    </Button>
   </section>
 );
 

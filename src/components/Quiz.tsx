@@ -37,14 +37,16 @@ const Quiz = () => {
 
 
   const handleNext = () => {
+    if (currentQuestionIndex + 1 >= totalQuestions) {
+      setIsFinished(true);
+      return;
+    }
     setCurrentQuestionIndex((prev) => prev + 1);
     setSelected(undefined);
     setIsAnswered(false);
     setIsCorrect(null);
-    if (currentQuestionIndex + 1 >= totalQuestions) {
-      setIsFinished(true);
-    }
   };
+
 
   const handleRetry = () => {
     setCurrentQuestionIndex(0);
@@ -77,12 +79,14 @@ const Quiz = () => {
         isCorrect={isCorrect}
       />
       {isAnswered && (
-        <button
-          className="mt-6 px-6 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700"
+        <Button
+          className="mt-8 w-full max-w-xs px-8 py-4 text-xl sm:text-2xl font-bold rounded-2xl bg-blue-600 text-white shadow hover:bg-blue-700"
           onClick={handleNext}
+          aria-label={currentQuestionIndex + 1 >= totalQuestions ? "リザルトを見る" : "次へ"}
+          variant="default"
         >
           {currentQuestionIndex + 1 >= totalQuestions ? "リザルトを見る" : "次へ"}
-        </button>
+        </Button>
       )}
     </section>
   );

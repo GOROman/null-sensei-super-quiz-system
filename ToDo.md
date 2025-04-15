@@ -10,7 +10,7 @@
 - [x] タイトル画面（TitleScreen.tsx）作成
 - [x] Quiz.tsx（クイズ進行管理）作成
 - [x] QuestionCard.tsx（1問表示・選択肢UI）作成
-- [ ] クイズ出題時に「何問目か」（例: 第2問 / 全5問）を表示する
+- [x] クイズ出題時に「何問目か」（例: 第2問 / 全5問）を表示する
   - Quiz.tsxで現在の問題番号（currentQuestionIndex）を管理
   - QuestionCard.tsxへpropsで番号・総数を渡す
   - QuestionCard.tsxでUI表示を追加

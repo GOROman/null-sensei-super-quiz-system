@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 /**
  * クイズリザルト画面
@@ -43,22 +44,28 @@ function Result({ score, total, onRetry }: ResultProps) {
       <div className="text-base sm:text-xl mb-4 text-gray-700">正答率: {percent}%</div>
       <div className="text-base sm:text-lg mb-8 font-bold text-pink-600">{rank}</div>
       <div className="flex flex-col sm:flex-row gap-4 w-full max-w-xs mx-auto">
-        <button
-          className="w-full px-6 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700"
+        <Button
+          className="w-full px-8 py-4 text-xl sm:text-2xl font-bold rounded-2xl bg-blue-600 text-white shadow hover:bg-blue-700"
           onClick={onRetry}
           aria-label="もう一度挑戦"
+          variant="default"
         >
           もう一度挑戦！
-        </button>
-        <a
-          href={tweetUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full px-6 py-2 bg-sky-400 text-white rounded shadow hover:bg-sky-500 text-center"
+        </Button>
+        <Button
+          asChild
+          className="w-full px-8 py-4 text-xl sm:text-2xl font-bold rounded-2xl bg-sky-400 text-white shadow hover:bg-sky-500 text-center"
           aria-label="Xでポスト"
+          variant="secondary"
         >
-          Xでポスト！
-        </a>
+          <a
+            href={tweetUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Xでポスト！
+          </a>
+        </Button>
       </div>
     </section>
   );
